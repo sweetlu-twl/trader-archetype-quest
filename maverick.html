@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Maverick Archetype Path</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #2C100F;
+      color: #FFE8E1;
+      font-family: 'IBM Plex Sans', sans-serif;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      color: #FF4C29;
+      font-size: 2.7rem;
+      margin-bottom: 0;
+    }
+
+    .subhead {
+      font-size: 1.2rem;
+      color: #FFE8E1;
+      margin-top: 5px;
+      margin-bottom: 40px;
+    }
+
+    img.badge {
+      width: 300px;
+      margin-bottom: 30px;
+    }
+
+    .section {
+      max-width: 800px;
+      margin: 40px auto;
+      text-align: left;
+    }
+
+    .section h2 {
+      color: #FF4C29;
+      font-size: 1.5rem;
+      border-bottom: 1px solid #CC2B1D;
+      padding-bottom: 6px;
+      margin-bottom: 15px;
+    }
+
+    .section p, .section ul {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      background-color: #CC2B1D;
+      color: #FFE8E1;
+      padding: 14px 30px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 30px 10px 0;
+      display: inline-block;
+      transition: background-color 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #FF4C29;
+      color: #2C100F;
+    }
+
+    footer {
+      margin-top: 80px;
+      font-size: 0.9rem;
+      color: #FFD4C7;
+    }
+  </style>
+</head>
+<body>
+<div style="position: absolute; top: 20px; left: 20px; z-index: 999;">
+  <div style="position: relative;">
+    <button onclick="toggleMenu()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: inherit;">☰</button>
+    <div id="menu" style="display: none; position: absolute; top: 40px; left: 0; background: rgba(0, 0, 0, 0.8); padding: 12px; border-radius: 8px; min-width: 200px;">
+      <a href="index.html" style="display: block; color: #fff; text-decoration: none; margin-bottom: 10px;">🏠 Home</a>
+      <a href="mission.html" style="display: block; color: #fff; text-decoration: none; margin-bottom: 10px;">🔁 Retake Quiz</a>
+      <div style="margin-top: 10px; font-weight: bold; color: #ccc;">🌐 Explore Archetypes</div>
+      <a href="sentinel.html" style="display: block; color: #E4F7EF; text-decoration: none; margin-top: 6px;">🌲 Sentinel</a>
+      <a href="architect.html" style="display: block; color: #E0ECFF; text-decoration: none; margin-top: 4px;">⚙️ Architect</a>
+      <a href="maverick.html" style="display: block; color: #FFE8E1; text-decoration: none; margin-top: 4px;">🔥 Maverick</a>
+      <a href="alchemist.html" style="display: block; color: #F0E9FF; text-decoration: none; margin-top: 4px;">🧬 Alchemist</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('menu');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  }
+
+  // Optional: close menu if clicked outside
+  document.addEventListener('click', function(event) {
+    const menu = document.getElementById('menu');
+    const button = event.target.closest('button');
+    if (!event.target.closest('#menu') && !button) {
+      menu.style.display = 'none';
+    }
+  });
+</script>
+
+  <!-- Badge + Archetype Identity -->
+  <img src="maverick_badge_clean.png" alt="Maverick Badge" class="badge">
+  <h1>You Are: The Maverick</h1>
+  <p class="subhead">Bold. Instinctive. Aggressive.</p>
+
+  <!-- Core Identity -->
+  <div class="section">
+    <h2>Core Identity</h2>
+    <p>You operate with conviction. You don’t just react — you attack. You excel in high-pressure environments where others hesitate. Risk doesn’t scare you — stagnation does. The market is your arena, and you’re here to play to win.</p>
+  </div>
+
+  <!-- Tactical Strengths -->
+  <div class="section">
+    <h2>Tactical Strengths</h2>
+    <ul>
+      <li>Quick decision-making under pressure</li>
+      <li>Spotting short-term inefficiencies</li>
+      <li>Taking asymmetric risk when opportunity strikes</li>
+      <li>Confidence to act when others freeze</li>
+    </ul>
+  </div>
+
+  <!-- Watch Outs -->
+  <div class="section">
+    <h2>Watch Outs</h2>
+    <ul>
+      <li>Can overtrade or over-leverage</li>
+      <li>May ignore risk management systems</li>
+      <li>Emotionally reactive after wins/losses</li>
+      <li>May burn out without structure or reflection</li>
+    </ul>
+  </div>
+
+  <!-- Level Up Missions -->
+  <div class="section">
+    <h2>Level Up Missions</h2>
+    <ul>
+      <li>Implement a rule to limit max trades per day or week</li>
+      <li>Track your win rate after impulse trades vs planned trades</li>
+      <li>Study aggressive traders who found discipline: Paul Tudor Jones, Dan Zanger, Steve Cohen</li>
+      <li>Set a weekly pause window to review trades without adrenaline</li>
+    </ul>
+  </div>
+
+  <!-- Inspiration -->
+  <div class="section">
+    <h2>Inspiration</h2>
+    <p>You thrive on instinct — but your greatest wins come when instinct is paired with restraint. Channel your fire through a narrow path, and it becomes unstoppable. You’re the kind of trader who becomes a legend — if you can survive the early game.</p>
+  </div>
+
+  <!-- Buttons -->
+  <a href="maverick_badge_clean.png" download="Maverick-Badge.png" class="btn">📥 Download Your Badge</a>
+  <a href="https://tradingwithlu.com" target="_blank" class="btn">🚀 Visit TradingWithLu.com</a>
+
+  <footer>
+    Ride the edge. Respect the chaos. Stay dangerous — but never reckless.
+  </footer>
+<footer style="margin-top: 60px; padding: 40px 20px; background-color: #111; color: #ccc; text-align: center; font-family: 'IBM Plex Sans', sans-serif;">
+  <div style="margin-bottom: 20px;">
+    <a href="https://youtube.com/@tradingwithlu" target="_blank" style="margin: 0 10px; color: #ccc; text-decoration: none;">YouTube</a> |
+    <a href="https://x.com/tradingwithlu" target="_blank" style="margin: 0 10px; color: #ccc; text-decoration: none;">X (Twitter)</a> |
+    <a href="https://tiktok.com/@tradingwithluu" target="_blank" style="margin: 0 10px; color: #ccc; text-decoration: none;">TikTok</a>
+  </div>
+
+  <div style="margin-bottom: 10px;">
+    <a href="https://tradingwithlu.com" target="_blank" style="color: #00ffcc; text-decoration: none; font-weight: bold;">↗️ Visit TradingWithLu.com</a>
+  </div>
+
+  <p style="max-width: 700px; margin: 0 auto; font-size: 0.75rem; line-height: 1.4;">
+    <strong>Disclaimer:</strong> This project is for educational and entertainment purposes only. Nothing provided constitutes financial advice. Trading carries risk and may not be suitable for all individuals. Always do your own due diligence and consult a licensed financial professional.
+  </p>
+</footer>
+
+
+</body>
+</html>

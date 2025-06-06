@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Architect Archetype Path</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #1A1A2E;
+      color: #E0ECFF;
+      font-family: 'IBM Plex Sans', sans-serif;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      color: #6699FF;
+      font-size: 2.7rem;
+      margin-bottom: 0;
+    }
+
+    .subhead {
+      font-size: 1.2rem;
+      color: #E0ECFF;
+      margin-top: 5px;
+      margin-bottom: 40px;
+    }
+
+    img.badge {
+      width: 300px;
+      margin-bottom: 30px;
+    }
+
+    .section {
+      max-width: 800px;
+      margin: 40px auto;
+      text-align: left;
+    }
+
+    .section h2 {
+      color: #3366CC;
+      font-size: 1.5rem;
+      border-bottom: 1px solid #6699FF;
+      padding-bottom: 6px;
+      margin-bottom: 15px;
+    }
+
+    .section p, .section ul {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      background-color: #3366CC;
+      color: #E0ECFF;
+      padding: 14px 30px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 30px 10px 0;
+      display: inline-block;
+      transition: background-color 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn:hover {
+      background-color: #6699FF;
+      color: #1A1A2E;
+    }
+
+    footer {
+      margin-top: 80px;
+      font-size: 0.9rem;
+      color: #B3CCFF;
+    }
+  </style>
+</head>
+<body>
+<div style="position: absolute; top: 20px; left: 20px; z-index: 999;">
+  <div style="position: relative;">
+    <button onclick="toggleMenu()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: inherit;">☰</button>
+    <div id="menu" style="display: none; position: absolute; top: 40px; left: 0; background: rgba(0, 0, 0, 0.8); padding: 12px; border-radius: 8px; min-width: 200px;">
+      <a href="index.html" style="display: block; color: #fff; text-decoration: none; margin-bottom: 10px;">🏠 Home</a>
+      <a href="mission.html" style="display: block; color: #fff; text-decoration: none; margin-bottom: 10px;">🔁 Retake Quiz</a>
+      <div style="margin-top: 10px; font-weight: bold; color: #ccc;">🌐 Explore Archetypes</div>
+      <a href="sentinel.html" style="display: block; color: #E4F7EF; text-decoration: none; margin-top: 6px;">🌲 Sentinel</a>
+      <a href="architect.html" style="display: block; color: #E0ECFF; text-decoration: none; margin-top: 4px;">⚙️ Architect</a>
+      <a href="maverick.html" style="display: block; color: #FFE8E1; text-decoration: none; margin-top: 4px;">🔥 Maverick</a>
+      <a href="alchemist.html" style="display: block; color: #F0E9FF; text-decoration: none; margin-top: 4px;">🧬 Alchemist</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('menu');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  }
+
+  // Optional: close menu if clicked outside
+  document.addEventListener('click', function(event) {
+    const menu = document.getElementById('menu');
+    const button = event.target.closest('button');
+    if (!event.target.closest('#menu') && !button) {
+      menu.style.display = 'none';
+    }
+  });
+</script>
+
+  <!-- Badge + Archetype Identity -->
+  <img src="architect_badge_clean.png" alt="Architect Badge" class="badge">
+  <h1>You Are: The Architect</h1>
+  <p class="subhead">Analytical. Structured. Tactical.</p>
+
+  <!-- Core Identity -->
+  <div class="section">
+    <h2>Core Identity</h2>
+    <p>You’re a methodical thinker who thrives on planning, repetition, statistics, and process. You’re building strategies with precision — logic and reason are your dominant strengths. When others improvise, you engineer. Trading for you is more blueprint than battlefield.</p>
+  </div>
+
+  <!-- Tactical Strengths -->
+  <div class="section">
+    <h2>Tactical Strengths</h2>
+    <ul>
+      <li>Spotting recurring patterns and setups</li>
+      <li>Disciplined trade execution</li>
+      <li>Strategic planning and position sizing</li>
+      <li>Data-driven decision-making</li>
+      <li>Edge in rule-based, systematic trading environments</li>
+    </ul>
+  </div>
+
+  <!-- Watch Outs -->
+  <div class="section">
+    <h2>Watch Outs</h2>
+    <ul>
+      <li>Can become overly rigid with rules</li>
+      <li>May over-optimize systems and miss simplicity</li>
+      <li>Risk of analysis paralysis under pressure</li>
+      <li>May undervalue intuition and gut feel</li>
+    </ul>
+  </div>
+
+  <!-- Level Up Missions -->
+  <div class="section">
+    <h2>Level Up Missions</h2>
+    <ul>
+      <li>Audit one of your favorite strategies. What’s fluff? What’s essential?</li>
+      <li>Try one “gut instinct” entry with controlled risk — reflect on how it felt</li>
+      <li>Build a checklist for review after every trade: logic, emotion, outcome</li>
+      <li>Study traders who merged logic + feel: Ed Seykota, Richard Dennis, John Henry</li>
+    </ul>
+  </div>
+
+  <!-- Inspiration -->
+  <div class="section">
+    <h2>Inspiration</h2>
+    <p>You’re part of a long lineage of system thinkers: chess players, engineers, and quant traders. Think Richard Dennis, Jim Simons, or anyone who turned structure into strategy. You’re not here for chaos — you’re here to build something that lasts.</p>
+  </div>
+
+  <!-- Buttons -->
+  <a href="architect_badge_clean.png" download="Architect-Badge.png" class="btn">📥 Download Your Badge</a>
+  <a href="https://tradingwithlu.com" target="_blank" class="btn">🧠 Visit TradingWithLu.com</a>
+
+  <footer>
+    You build better systems because you build from within. Precision is your power.
+  </footer>
+
+</body>
+<footer style="margin-top: 60px; padding: 40px 20px; background-color: #111; color: #ccc; text-align: center; font-family: 'IBM Plex Sans', sans-serif;">
+  <div style="margin-bottom: 20px;">
+    <a href="https://youtube.com/@tradingwithlu" target="_blank" style="margin: 0 10px; color: #ccc; text-decoration: none;">YouTube</a> |
+    <a href="https://x.com/tradingwithlu" target="_blank" style="margin: 0 10px; color: #ccc; text-decoration: none;">X (Twitter)</a> |
+    <a href="https://tiktok.com/@tradingwithluu" target="_blank" style="margin: 0 10px; color: #ccc; text-decoration: none;">TikTok</a>
+  </div>
+
+  <div style="margin-bottom: 10px;">
+    <a href="https://tradingwithlu.com" target="_blank" style="color: #00ffcc; text-decoration: none; font-weight: bold;">↗️ Visit TradingWithLu.com</a>
+  </div>
+
+  <p style="max-width: 700px; margin: 0 auto; font-size: 0.75rem; line-height: 1.4;">
+    <strong>Disclaimer:</strong> This project is for educational and entertainment purposes only. Nothing provided constitutes financial advice. Trading carries risk and may not be suitable for all individuals. Always do your own due diligence and consult a licensed financial professional.
+  </p>
+</footer>
+
+</html>

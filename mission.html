@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Trader's Mission</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      background-color: #0e0e0e;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    a.home-link {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #00ffcc;
+      font-weight: bold;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .mission-header {
+      padding: 40px 20px;
+    }
+
+    .mission-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .mission-header p {
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0.85;
+    }
+
+    .progress-bar {
+      width: 100%;
+      background-color: #333;
+      height: 10px;
+      margin: 0 auto;
+    }
+
+    .progress {
+      height: 10px;
+      background-color: #00ffcc;
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .scenario-wrapper {
+      padding: 40px 20px;
+    }
+
+    .scenario {
+      display: none;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .scenario.active {
+      display: block;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+    }
+
+    .choices {
+      margin-top: 20px;
+    }
+
+    .choices button {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      margin: 10px auto;
+      padding: 14px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #1f1f1f;
+      color: white;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .choices button:hover {
+      background-color: #333;
+    }
+
+    .choices button.selected {
+      background-color: #00ffcc;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .button-row {
+      margin-top: 20px;
+    }
+
+    .next-button,
+    .back-button {
+      padding: 12px 24px;
+      background-color: #00ffcc;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    .next-button:disabled {
+      background-color: #444;
+      color: #999;
+      cursor: not-allowed;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 40px 20px;
+      background-color: #111;
+      color: #ccc;
+      text-align: center;
+      font-family: 'IBM Plex Sans', sans-serif;
+    }
+
+    footer a {
+      color: #ccc;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #00ffcc;
+    }
+
+    footer p {
+      font-size: 0.75rem;
+      max-width: 700px;
+      margin: 10px auto 0;
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="home-link">🏠 Home</a>
+
+  <div class="mission-header">
+    <h1>🚀 Your Trader Mission</h1>
+    <p>Answer honestly. Think of similar real-life situations if needed. The only rule? Have fun.</p>
+  </div>
+
+  <div class="progress-bar">
+    <div class="progress" id="progressBar"></div>
+  </div>
+
+  <div class="scenario-wrapper">
+    <!-- Sample Scenario 1 -->
+    <div class="scenario active" data-scenario="1">
+      <h2>📉 Market Volatility</h2>
+      <p>The market experiences a sudden downturn due to unexpected economic news.</p>
+      <div class="choices">
+        <button data-scenario="1" data-choice="sentinel">Reassess your strategy and wait for stability.</button>
+        <button data-scenario="1" data-choice="architect">Analyze the data to find new opportunities.</button>
+        <button data-scenario="1" data-choice="maverick">Take calculated risks to capitalize on the volatility.</button>
+        <button data-scenario="1" data-choice="alchemist">Reflect on the situation to understand underlying causes.</button>
+      </div>
+      <div class="button-row">
+        <button class="back-button">← Back</button>
+        <button class="next-button" disabled>Next →</button>
+      </div>
+    </div>
+    <!-- Scenario 2 -->
+<div class="scenario" data-scenario="2">
+  <h2>🔄 Consecutive Losses</h2>
+  <p>After a series of losses, you're feeling uncertain about your trading strategy.</p>
+  <div class="choices">
+    <button data-choice="sentinel" data-scenario="2">Take a break to prevent emotional decisions.</button>
+    <button data-choice="architect" data-scenario="2">Review and refine your trading system.</button>
+    <button data-choice="maverick" data-scenario="2">Increase your efforts to recover losses quickly.</button>
+    <button data-choice="alchemist" data-scenario="2">Analyze your mindset and emotions to understand the cause.</button>
+  </div>
+  <div class="button-row">
+    <button class="back-button">← Back</button>
+    <button class="next-button" disabled>Next →</button>
+  </div>
+</div>
+
+<!-- Scenario 3 -->
+<div class="scenario" data-scenario="3">
+  <h2>📋 Trading Plan Adherence</h2>
+  <p>You've developed a comprehensive trading plan.</p>
+  <div class="choices">
+    <button data-choice="sentinel" data-scenario="3">Adhere to it meticulously, making adjustments only after thorough analysis.</button>
+    <button data-choice="architect" data-scenario="3">Use it as a guideline but remain flexible to adapt to market changes.</button>
+    <button data-choice="maverick" data-scenario="3">Prefer to rely on intuition and make spontaneous decisions.</button>
+    <button data-choice="alchemist" data-scenario="3">Reflect on your experiences to evolve your trading approach.</button>
+  </div>
+  <div class="button-row">
+    <button class="back-button">← Back</button>
+    <button class="next-button" disabled>Next →</button>
+  </div>
+</div>
+
+<!-- Scenario 4 -->
+<div class="scenario" data-scenario="4">
+  <h2>⚖️ Risk Assessment</h2>
+  <p>You're considering entering a high-risk trade with potential for significant returns.</p>
+  <div class="choices">
+    <button data-choice="sentinel" data-scenario="4">Evaluate the risk thoroughly and proceed only if it aligns with your risk tolerance.</button>
+    <button data-choice="architect" data-scenario="4">Analyze the potential outcomes and adjust your strategy accordingly.</button>
+    <button data-choice="maverick" data-scenario="4">Embrace the opportunity for high returns, accepting the associated risks.</button>
+    <button data-choice="alchemist" data-scenario="4">Consider your emotional readiness and the trade's alignment with your goals.</button>
+  </div>
+  <div class="button-row">
+    <button class="back-button">← Back</button>
+    <button class="next-button" disabled>Next →</button>
+  </div>
+</div>
+<!-- Scenario 5 -->
+<div class="scenario" data-scenario="5">
+  <h2>🧪 Building a Strategy</h2>
+  <p>You're exploring a new trading strategy. What's your starting point?</p>
+  <div class="choices">
+    <button data-choice="architect" data-scenario="5">Backtest and paper trade until I’ve got data.</button>
+    <button data-choice="maverick" data-scenario="5">Start small with live money and feel it out.</button>
+    <button data-choice="sentinel" data-scenario="5">Ask others what they’re doing and copy what works.</button>
+    <button data-choice="alchemist" data-scenario="5">Meditate on what makes sense to me, then create something new.</button>
+  </div>
+  <div class="button-row">
+    <button class="back-button">← Back</button>
+    <button class="next-button" disabled>Next →</button>
+  </div>
+</div>
+
+<!-- Scenario 6 -->
+<div class="scenario" data-scenario="6">
+  <h2>⚙️ Optimizing Performance</h2>
+  <p>You've been profitable but feel your edge is fading. What do you do?</p>
+  <div class="choices">
+    <button data-choice="architect" data-scenario="6">Break down my trades and look for statistical inefficiencies.</button>
+    <button data-choice="alchemist" data-scenario="6">Change my routine to bring fresh energy.</button>
+    <button data-choice="sentinel" data-scenario="6">Stick to my process — consistency is more important.</button>
+    <button data-choice="maverick" data-scenario="6">Try a new market that’s moving better.</button>
+  </div>
+  <div class="button-row">
+    <button class="back-button">← Back</button>
+    <button class="next-button" disabled>Next →</button>
+  </div>
+</div>
+
+<!-- Scenario 7 -->
+<div class="scenario" data-scenario="7">
+  <h2>📊 Following the System</h2>
+  <p>A setup fits your system but not your gut. What do you do?</p>
+  <div class="choices">
+    <button data-choice="architect" data-scenario="7">Trust the system. It exists for this exact reason.</button>
+    <button data-choice="maverick" data-scenario="7">Trust my gut — if I hesitate, it’s a no.</button>
+    <button data-choice="alchemist" data-scenario="7">Review both again and find the overlap.</button>
+    <button data-choice="sentinel" data-scenario="7">Skip it. Doubt means risk isn’t worth it.</button>
+  </div>
+  <div class="button-row">
+    <button class="back-button">← Back</button>
+    <button class="next-button" disabled>Next →</button>
+  </div>
+</div>
+<!-- Scenario 8 -->
+<div class="scenario" data-scenario="8">
+  <h2>💥 A Plan That Fails</h2>
+  <p>You followed your plan exactly — and still took a big loss. What’s your response?</p>
+  <div class="choices">
+    <button data-choice="architect" data-scenario="8">Refine the system and adjust the risk settings.</button>
+    <button data-choice="sentinel" data-scenario="8">I’m glad I stuck to the plan — losses happen.</button>
+    <button data-choice="alchemist" data-scenario="8">I need to step away and reset emotionally.</button>
+    <button data-choice="maverick" data-scenario="8">I shouldn’t have followed the plan — I saw it coming.</button>
+  </div>
+  <div class="button-row">
+    <button class="back-button">← Back</button>
+    <button class="next-button" disabled>Next →</button>
+  </div>
+</div>
+
+<!-- Scenario 9 -->
+<div class="scenario" data-scenario="9">
+  <h2>🚀 Chasing Opportunity</h2>
+  <p>A fast-moving ticker breaks out without warning. You missed your ideal entry.</p>
+  <div class="choices">
+    <button data-choice="maverick" data-scenario="9">Jump in anyway — momentum is king.</button>
+    <button data-choice="sentinel" data-scenario="9">Wait for a backtest or secondary setup.</button>
+    <button data-choice="architect" data-scenario="9">Scan for similar names to build a basket approach.</button>
+    <button data-choice="alchemist" data-scenario="9">Reflect on what drew your attention — what patterns are you sensing?</button>
+  </div>
+  <div class="button-row">
+    <button class="back-button">← Back</button>
+    <button class="next-button" disabled>Next →</button>
+  </div>
+</div>
+
+<!-- Scenario 10 -->
+<div class="scenario" data-scenario="10">
+  <h2>📰 Reacting to News</h2>
+  <p>An unexpected news drop hits the market. What’s your instinct?</p>
+  <div class="choices">
+    <button data-choice="maverick" data-scenario="10">Trade it fast — news is the edge.</button>
+    <button data-choice="sentinel" data-scenario="10">Avoid trading — news adds randomness.</button>
+    <button data-choice="architect" data-scenario="10">Analyze how it changes the broader setup first.</button>
+    <button data-choice="alchemist" data-scenario="10">Watch how others react before deciding.</button>
+  </div>
+  <div class="button-row">
+    <button class="back-button">← Back</button>
+    <button class="next-button" disabled>Next →</button>
+  </div>
+</div>
+<!-- Scenario 11 -->
+<div class="scenario" data-scenario="11">
+  <h2>📈 Position Management</h2>
+  <p>You're up 25% on a fast-moving trade. What’s your instinct?</p>
+  <div class="choices">
+    <button data-choice="maverick" data-scenario="11">Let it run — this could be a home run.</button>
+    <button data-choice="sentinel" data-scenario="11">Lock in partials, trail the rest.</button>
+    <button data-choice="architect" data-scenario="11">Refer to your exit playbook and follow it.</button>
+    <button data-choice="alchemist" data-scenario="11">Feel the market rhythm — exit if the tone shifts.</button>
+  </div>
+  <div class="button-row">
+    <button class="back-button">← Back</button>
+    <button class="next-button" disabled>Next →</button>
+  </div>
+</div>
+
+<!-- Scenario 12 -->
+<div class="scenario" data-scenario="12">
+  <h2>🧬 Your Trading Style</h2>
+  <p>Which description best matches how you naturally approach trades?</p>
+  <div class="choices">
+    <button data-choice="maverick" data-scenario="12">I move fast and trust my gut.</button>
+    <button data-choice="sentinel" data-scenario="12">I follow a steady checklist and rules.</button>
+    <button data-choice="architect" data-scenario="12">I need to understand the logic behind every trade.</button>
+    <button data-choice="alchemist" data-scenario="12">I’m more about feel and insight than rigid steps.</button>
+  </div>
+  <div class="button-row">
+    <button class="back-button">← Back</button>
+    <button class="next-button" disabled>Next →</button>
+  </div>
+</div>
+
+<!-- Scenario 13 -->
+<div class="scenario" data-scenario="13">
+  <h2>🌿 Time Off the Screens</h2>
+  <p>You're away from the markets for a few days. What’s your mindset?</p>
+  <div class="choices">
+    <button data-choice="alchemist" data-scenario="13">I reflect on recent trades and what they taught me.</button>
+    <button data-choice="architect" data-scenario="13">I review systems and refine mechanics.</button>
+    <button data-choice="sentinel" data-scenario="13">I take a complete break and let it all go.</button>
+    <button data-choice="maverick" data-scenario="13">I watch charts on my phone — you never know when opportunity hits.</button>
+  </div>
+  <div class="button-row">
+    <button class="back-button">← Back</button>
+    <button class="next-button" disabled>Next →</button>
+  </div>
+</div>
+<!-- Scenario 14 -->
+<div class="scenario" data-scenario="14">
+  <h2>👀 Market Observation</h2>
+  <p>You spend 2 hours watching the market — but don’t take a trade. How do you feel?</p>
+  <div class="choices">
+    <button data-choice="alchemist" data-scenario="14">Still valuable — I notice subtle shifts others miss.</button>
+    <button data-choice="maverick" data-scenario="14">Frustrated. I should’ve taken something.</button>
+    <button data-choice="sentinel" data-scenario="14">Proud of my discipline. Rules kept me out.</button>
+    <button data-choice="architect" data-scenario="14">Curious — I’ll analyze what setups didn’t trigger.</button>
+  </div>
+  <div class="button-row">
+    <button class="back-button">← Back</button>
+    <button class="next-button" disabled>Next →</button>
+  </div>
+</div>
+
+<!-- Scenario 15 -->
+<div class="scenario" data-scenario="15">
+  <h2>📚 Learning Style</h2>
+  <p>How do you best learn and grow as a trader?</p>
+  <div class="choices">
+    <button data-choice="alchemist" data-scenario="15">Journaling and noticing emotional patterns over time.</button>
+    <button data-choice="architect" data-scenario="15">Running data, stats, and performance metrics.</button>
+    <button data-choice="sentinel" data-scenario="15">Studying trade examples and sticking to a process.</button>
+    <button data-choice="maverick" data-scenario="15">Taking real trades and figuring it out as I go.</button>
+  </div>
+  <div class="button-row">
+    <button class="back-button">← Back</button>
+    <button class="next-button" disabled>Next →</button>
+  </div>
+</div>
+
+<!-- Scenario 16 -->
+<div class="scenario" data-scenario="16">
+  <h2>🌀 Strategy Fit</h2>
+  <p>You're following a proven strategy — but it doesn't feel like you. What do you do?</p>
+  <div class="choices">
+    <button data-choice="alchemist" data-scenario="16">Adjust it until it feels aligned and intuitive.</button>
+    <button data-choice="architect" data-scenario="16">Backtest more and try to trust the process.</button>
+    <button data-choice="sentinel" data-scenario="16">If it works, I’ll stick with it.</button>
+    <button data-choice="maverick" data-scenario="16">Ditch it and try something with more speed.</button>
+  </div>
+  <div class="button-row">
+    <button class="back-button">← Back</button>
+    <button class="next-button" disabled>🔥 Complete Mission & Reveal Identity</button>
+  </div>
+</div>
+
+  </div>
+
+  <footer>
+    <div style="margin-bottom: 20px;">
+      <a href="https://youtube.com/@tradingwithlu" target="_blank">YouTube</a> |
+      <a href="https://x.com/tradingwithlu" target="_blank">X (Twitter)</a> |
+      <a href="https://tiktok.com/@tradingwithluu" target="_blank">TikTok</a>
+    </div>
+    <div style="margin-bottom: 10px;">
+      <a href="https://tradingwithlu.com" target="_blank" style="color: #00ffcc; font-weight: bold;">↗️ Visit TradingWithLu.com</a>
+    </div>
+    <p><strong>Disclaimer:</strong> This is for educational purposes only. Not financial advice. Trading involves risk. Consult a professional before making financial decisions.</p>
+  </footer>
+
+  <script>
+    const scenarios = document.querySelectorAll('.scenario');
+    const progressBar = document.getElementById('progressBar');
+    const missionNames = [
+      "Market Volatility",
+      "Consecutive Losses",
+      "Trading Plan Adherence",
+      "Risk Assessment",
+      "Building a Strategy",
+      "Optimizing Performance",
+      "Following the System",
+      "A Plan That Fails",
+      "Chasing Opportunity",
+      "Reacting to News",
+      "Position Management",
+      "Your Trading Style",
+      "Time Off the Screens",
+      "Market Observation",
+      "Learning Style",
+      "Strategy Fit"
+    ];
+
+    let currentIndex = 0;
+
+    const scores = {
+      sentinel: 0,
+      architect: 0,
+      maverick: 0,
+      alchemist: 0
+    };
+
+    function updateProgress() {
+      const percent = ((currentIndex + 1) / scenarios.length) * 100;
+      progressBar.style.width = `${percent}%`;
+    }
+
+    document.querySelectorAll('.choices button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const parentScenario = btn.closest('.scenario');
+        const scenarioIndex = parseInt(parentScenario.getAttribute('data-scenario')) - 1;
+        const choice = btn.getAttribute('data-choice');
+
+        parentScenario.querySelectorAll('button').forEach(b => {
+          if (b.classList.contains('selected')) {
+            scores[b.getAttribute('data-choice')]--;
+          }
+          b.classList.remove('selected');
+        });
+
+        btn.classList.add('selected');
+        scores[choice]++;
+        parentScenario.querySelector('.next-button').disabled = false;
+
+        // Update next button text
+        const nextBtn = parentScenario.querySelector('.next-button');
+        if (scenarioIndex + 1 < missionNames.length) {
+          nextBtn.textContent = `🎯 Deploy Mission ${scenarioIndex + 2}: ${missionNames[scenarioIndex + 1]}`;
+        } else {
+          nextBtn.textContent = `🔥 Complete Mission & Reveal Identity`;
+        }
+
+        updateProgress();
+      });
+    });
+
+    document.querySelectorAll('.next-button').forEach((nextBtn, index) => {
+      nextBtn.addEventListener('click', () => {
+        scenarios[index].classList.remove('active');
+
+        if (index + 1 === scenarios.length) {
+          const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+          const topType = sorted[0][0];
+          const query = new URLSearchParams(scores).toString();
+          window.location.href = `unlocked.html?top=${topType}&${query}`;
+        } else {
+          scenarios[index + 1]?.classList.add('active');
+          currentIndex = index + 1;
+          updateProgress();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    });
+
+    document.querySelectorAll('.back-button').forEach((backBtn, index) => {
+      backBtn.addEventListener('click', () => {
+        if (index > 0) {
+          scenarios[index].classList.remove('active');
+          scenarios[index - 1].classList.add('active');
+          currentIndex = index - 1;
+          updateProgress();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    });
+
+    updateProgress();
+  </script>
+</body>
+</html>

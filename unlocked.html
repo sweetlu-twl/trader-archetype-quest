@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Your Archetype</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style id="dynamic-theme"></style>
+  <style>
+    body {
+      font-family: 'IBM Plex Sans', sans-serif;
+      text-align: center;
+      padding: 60px 20px;
+      transition: background-color 0.4s ease;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+
+    button {
+      padding: 15px 30px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      margin-top: 30px;
+      transition: background-color 0.2s ease;
+    }
+
+    .breakdown-entry {
+      max-width: 500px;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    .breakdown-label {
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .breakdown-bar {
+      width: 100%;
+      height: 14px;
+      background-color: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+<a href="index.html" style="position: absolute; top: 20px; left: 20px; text-decoration: none; font-weight: bold; color: #00ffcc;">🏠 Home</a>
+
+  <h1 id="archetypeTitle"></h1>
+  <p id="archetypeDescription"></p>
+  <div id="archetypeBreakdown" style="margin-top: 30px;"></div>
+  <button id="viewPathButton">🎮 View My Archetype Path →</button>
+  <button onclick="window.location.href='mission.html'" style="margin-top: 15px;">🔁 Retake the Quiz</button>
+
+  <script>
+    const archetype = localStorage.getItem('traderArchetype');
+    // Parse query string from URL
+function getQueryParams() {
+  const params = new URLSearchParams(window.location.search);
+  const counts = {
+    sentinel: parseInt(params.get('sentinel')) || 0,
+    architect: parseInt(params.get('architect')) || 0,
+    maverick: parseInt(params.get('maverick')) || 0,
+    alchemist: parseInt(params.get('alchemist')) || 0
+  };
+  return counts;
+}
+
+const archetypeCounts = getQueryParams();
+
+
+    const data = {
+      sentinel: {
+        title: "🌲 You Are: The Sentinel",
+        description: "You are calm, steady, and disciplined. Your edge is consistency, your weapon is patience. You don't force trades — you wait for them to come to you.",
+        pathLink: "sentinel.html",
+        theme: {
+          background: "#102A24",
+          header: "#00B686",
+          accent: "#00795E",
+          text: "#E4F7EF"
+        }
+      },
+      architect: {
+        title: "⚙️ You Are: The Architect",
+        description: "You are a builder of systems. Your trading thrives when it's rule-based, logical, and backed by structure. You see trading as an engineering challenge.",
+        pathLink: "architect.html",
+        theme: {
+          background: "#1A1A2E",
+          header: "#6699FF",
+          accent: "#3366CC",
+          text: "#E0ECFF"
+        }
+      },
+      maverick: {
+        title: "🔥 You Are: The Maverick",
+        description: "You trust your gut. You're bold, decisive, and ready to pounce when the moment's right. But your superpower only works when paired with control.",
+        pathLink: "maverick.html",
+        theme: {
+          background: "#2C100F",
+          header: "#FF4C29",
+          accent: "#CC2B1D",
+          text: "#FFE8E1"
+        }
+      },
+      alchemist: {
+        title: "🧬 You Are: The Alchemist",
+        description: "You see the patterns beneath the surface. You're intuitive, adaptive, and driven by insight. Your growth comes from refining your inner compass.",
+        pathLink: "alchemist.html",
+        theme: {
+          background: "#1C1A3E",
+          header: "#B580F2",
+          accent: "#7E4CD2",
+          text: "#F0E9FF"
+        }
+      }
+    };
+
+    const sorted = Object.entries(archetypeCounts).sort(([, a], [, b]) => b - a);
+    const topArchetype = sorted.length ? sorted[0][0] : null;
+
+    if (topArchetype && data[topArchetype]) {
+      const { title, description, theme, pathLink } = data[topArchetype];
+
+      document.getElementById('archetypeTitle').textContent = title;
+      document.getElementById('archetypeDescription').textContent = description;
+      document.getElementById('viewPathButton').onclick = () => {
+        window.location.href = pathLink;
+      };
+
+      // Apply brand color theme
+      document.getElementById("dynamic-theme").textContent = `
+        body { background-color: ${theme.background}; color: ${theme.text}; }
+        h1 { color: ${theme.header}; }
+        button { background-color: ${theme.accent}; color: ${theme.text}; }
+        button:hover { background-color: ${theme.header}; color: #000; }
+      `;
+
+      const breakdown = document.getElementById('archetypeBreakdown');
+      const roles = ['Primary', 'Secondary', 'Tertiary', 'Least'];
+
+      sorted.forEach(([key, value], index) => {
+        const pct = ((value / 16) * 100).toFixed(1);
+        const role = roles[index];
+        const label = `${role}: ${data[key].title.split(': ')[1]} – ${pct}%`;
+
+        const container = document.createElement('div');
+        container.className = 'breakdown-entry';
+
+        const labelP = document.createElement('p');
+        labelP.className = 'breakdown-label';
+        labelP.textContent = label;
+
+        const barWrap = document.createElement('div');
+        barWrap.className = 'breakdown-bar';
+
+        const bar = document.createElement('div');
+        bar.className = 'bar-fill';
+        bar.style.width = `${pct}%`;
+        bar.style.backgroundColor = data[key].theme.header;
+
+        barWrap.appendChild(bar);
+        container.appendChild(labelP);
+        container.appendChild(barWrap);
+        breakdown.appendChild(container);
+      });
+
+    } else {
+      document.getElementById('archetypeTitle').textContent = "Hmm... Something went wrong.";
+      document.getElementById('archetypeDescription').textContent = "We couldn’t determine your archetype. Please retake the mission.";
+      document.getElementById('viewPathButton').textContent = "🔁 Retake Mission";
+      document.getElementById('viewPathButton').onclick = () => {
+        window.location.href = "mission.html";
+      };
+    }
+  </script>
+</body>
+<footer style="margin-top: 60px; padding: 40px 20px; background-color: #111; color: #ccc; text-align: center; font-family: 'IBM Plex Sans', sans-serif;">
+  <div style="margin-bottom: 20px;">
+    <a href="https://youtube.com/@tradingwithlu" target="_blank" style="margin: 0 10px; color: #ccc; text-decoration: none;">YouTube</a> |
+    <a href="https://x.com/tradingwithlu" target="_blank" style="margin: 0 10px; color: #ccc; text-decoration: none;">X (Twitter)</a> |
+    <a href="https://tiktok.com/@tradingwithluu" target="_blank" style="margin: 0 10px; color: #ccc; text-decoration: none;">TikTok</a>
+  </div>
+
+  <div style="margin-bottom: 10px;">
+    <a href="https://tradingwithlu.com" target="_blank" style="color: #00ffcc; text-decoration: none; font-weight: bold;">↗️ Visit TradingWithLu.com</a>
+  </div>
+
+  <p style="max-width: 700px; margin: 0 auto; font-size: 0.75rem; line-height: 1.4;">
+    <strong>Disclaimer:</strong> This project is for educational and entertainment purposes only. Nothing provided constitutes financial advice. Trading carries risk and may not be suitable for all individuals. Always do your own due diligence and consult a licensed financial professional.
+  </p>
+</footer>
+
+</html>
