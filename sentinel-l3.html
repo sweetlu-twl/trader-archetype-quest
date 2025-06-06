@@ -28,9 +28,60 @@
   </style>
 </head>
 <body>
-<div style="max-width: 800px; margin: 0 auto; padding: 60px 20px;">
-<h1>🌲 Sentinel Advanced: Expand Your Edge</h1>
 
+<!-- Hamburger Menu -->
+<div style="position: absolute; top: 20px; left: 20px; z-index: 999;">
+  <div style="position: relative;">
+    <button onclick="toggleMenu()" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: inherit;">☰</button>
+    <div id="menu" style="display: none; position: absolute; top: 40px; left: 0; background: rgba(0, 0, 0, 0.8); padding: 12px; border-radius: 8px; min-width: 200px;">
+      <a href="index.html" style="display: block; color: #fff; text-decoration: none; margin-bottom: 10px;">🏠 Home</a>
+      <a href="mission.html" style="display: block; color: #fff; text-decoration: none; margin-bottom: 10px;">🔁 Retake Quiz</a>
+      <div style="margin-top: 10px; font-weight: bold; color: #ccc;">🌐 Explore Archetypes</div>
+      <a href="sentinel.html" style="display: block; color: #E4F7EF; text-decoration: none; margin-top: 6px;">🌲 Sentinel</a>
+      <a href="architect.html" style="display: block; color: #E0ECFF; text-decoration: none; margin-top: 4px;">⚙️ Architect</a>
+      <a href="maverick.html" style="display: block; color: #FFE8E1; text-decoration: none; margin-top: 4px;">🔥 Maverick</a>
+      <a href="alchemist.html" style="display: block; color: #F0E9FF; text-decoration: none; margin-top: 4px;">🧬 Alchemist</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('menu');
+    menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  }
+  document.addEventListener('click', function(event) {
+    const menu = document.getElementById('menu');
+    const button = event.target.closest('button');
+    if (!event.target.closest('#menu') && !button) {
+      menu.style.display = 'none';
+    }
+  });
+</script>
+
+<div style="max-width: 800px; margin: 0 auto; padding: 60px 20px;">
+  <h1>🌲 Sentinel Advanced: Expand Your Edge</h1>
+
+  <!-- Progress Navigation -->
+  <div class="section">
+    <h2>Sentinel Progress</h2>
+    <div style="text-align: center; margin-bottom: 12px;">
+      <a href="sentinel.html" style="color: #00B686; text-decoration: none; font-weight: bold;">← Back to Sentinel Overview</a>
+    </div>
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+      <a href="sentinel-l1.html" style="background-color: #00795E; color: #E4F7EF; padding: 10px 18px; text-align: center; text-decoration: none; border-radius: 8px; font-size: 0.95rem; font-weight: bold; min-width: 160px;">
+        🔰 Beginner
+      </a>
+      <a href="sentinel-l2.html" style="background-color: #00795E; color: #E4F7EF; padding: 10px 18px; text-align: center; text-decoration: none; border-radius: 8px; font-size: 0.95rem; font-weight: bold; min-width: 160px;">
+        🔁 Intermediate
+      </a>
+      <strong style="background-color: #00795E; color: #E4F7EF; padding: 10px 18px; border-radius: 8px; min-width: 160px; font-size: 0.95rem;">
+        🚀 Advanced – You Are Here
+      </strong>
+    </div>
+  </div>
+
+  <!-- Page Content -->
   <div class="section">
     <h2>Where You Are Now</h2>
     <p>
@@ -77,15 +128,6 @@
     </p>
   </div>
 
-  <div class="section">
-    <h2>Advance Through the Sentinel Path</h2>
-    <ul>
-      <li><a href="sentinel-l1.html">🟢 Beginner – Build Your Foundation</a></li>
-      <li><a href="sentinel-l2.html">🔁 Intermediate – Find Your Consistency</a></li>
-      <li><strong>Advanced</strong> (You are here)</li>
-    </ul>
-  </div>
-
   <div style="text-align: center; padding: 40px 20px;">
     <a
       href="https://tally.so/r/wd4dEq"
@@ -125,5 +167,6 @@
     </p>
   </footer>
 </div>
+
 </body>
 </html>
