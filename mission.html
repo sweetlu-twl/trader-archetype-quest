@@ -494,23 +494,40 @@
       });
     });
 
-    document.querySelectorAll('.next-button').forEach((nextBtn, index) => {
-      nextBtn.addEventListener('click', () => {
-        scenarios[index].classList.remove('active');
+        document.querySelectorAll('.next-button').forEach((nextBtn, index) => {
+  nextBtn.addEventListener('click', () => {
+    scenarios[index].classList.remove('active');
 
-        if (index + 1 === scenarios.length) {
-          const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-          const topType = sorted[0][0];
-          const query = new URLSearchParams(scores).toString();
-          window.location.href = `unlocked.html?top=${topType}&${query}`;
-        } else {
-          scenarios[index + 1]?.classList.add('active');
-          currentIndex = index + 1;
-          updateProgress();
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+    if (index + 1 < scenarios.length) {
+      scenarios[index + 1].classList.add('active');
+      currentIndex = index + 1;
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Final screen: submit + redirect
+      const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+      const primary = sorted[0]?.[0] || "";
+      const secondary = sorted[1]?.[0] || "";
+
+      console.log("Submitting to Google Sheet:", primary, secondary);
+
+      fetch("https://script.google.com/macros/s/AKfycbwlXsbIig7GVmZ_GR4tVaAFPwEZGeJ_WbS9yA0H1BVqx_vvXSUdP_8PNve056RY4tdt/exec", {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ primary, secondary })
+      })
+      .finally(() => {
+        const query = new URLSearchParams(scores).toString();
+        setTimeout(() => {
+          window.location.href = `unlocked.html?top=${primary}&${query}`;
+        }, 500);
       });
-    });
+    }
+  });
+});
 
     document.querySelectorAll('.back-button').forEach((backBtn, index) => {
       backBtn.addEventListener('click', () => {
