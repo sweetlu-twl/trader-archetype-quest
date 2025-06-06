@@ -511,19 +511,15 @@
 
       console.log("Submitting to Google Sheet:", primary, secondary);
 
+      // ✅ Fix: define FormData BEFORE fetch
+      const formData = new FormData();
+      formData.append("primary", primary);
+      formData.append("secondary", secondary);
+
       fetch("https://script.google.com/macros/s/AKfycbwlXsbIig7GVmZ_GR4tVaAFPwEZGeJ_WbS9yA0H1BVqx_vvXSUdP_8PNve056RY4tdt/exec", {
         method: "POST",
         mode: "no-cors",
-        const formData = new FormData();
-formData.append("primary", primary);
-formData.append("secondary", secondary);
-
-fetch("https://script.google.com/macros/s/YOUR_ID/exec", {
-  method: "POST",
-  mode: "no-cors",
-  body: formData
-});
-
+        body: formData
       })
       .finally(() => {
         const query = new URLSearchParams(scores).toString();
